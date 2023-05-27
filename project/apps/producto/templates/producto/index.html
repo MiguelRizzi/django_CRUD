@@ -3,5 +3,9 @@
 {% block title %}Productos{% endblock title %}
 
 {% block content %}
+
+    {% block content_producto %}
+        <a href="{% url 'producto:producto_categoria_list' %}">Ir a lista de categorias</a>
+    {% endblock content_producto %}
     
 {% endblock content %}

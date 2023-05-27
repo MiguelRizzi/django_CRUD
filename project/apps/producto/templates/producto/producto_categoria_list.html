@@ -1,7 +1,14 @@
-{% extends 'home/base.html' %}
+{% extends 'producto/index.html' %}
 
-{% block title %}Categorias de Productos{% endblock title %}
 
-{% block content %}
+
+{% block content_producto %}
+    <h2>Categorias de productos</h2>
+    <ul class="list-group">
+    {% for categoria in categorias %}
+        <li class="list-group-item">{{ categoria.nombre }}</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'producto:index' %}">Volver a indice de productos</a>
     
-{% endblock content %}
+{% endblock content_producto %}
