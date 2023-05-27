@@ -1,13 +1,12 @@
 {% extends 'producto/index.html' %}
 
 {% block content_producto %}
-    <h1>Crear categoría</h1>
-
-    <form method="post">
+    <h2>Modificar categoria de productos</h2>
+    <p>¿Confirmas modificar {{ categoria }}?</p>
+    <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Crear categoría" class="btn btn-success">
+        <input type="submit" value="Modificar" class="btn btn-primary">
     </form>
-
     <a href="{% url 'producto:index' %}">Volver a indice de productos</a>
 {% endblock content_producto %}

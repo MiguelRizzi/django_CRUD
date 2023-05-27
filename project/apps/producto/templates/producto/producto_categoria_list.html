@@ -6,7 +6,11 @@
     <h2>Categorias de productos</h2>
     <ul class="list-group">
     {% for categoria in categorias %}
-        <li class="list-group-item">{{ categoria.nombre }}</li>
+        <li class="list-group-item">
+            {{ categoria.nombre }}
+            <a href="{% url 'producto:producto_categoria_update' categoria.id %}" class="btn btn-primary">Modificar</a>
+            <a href="{% url 'producto:producto_categoria_delete' categoria.id %}" class="btn btn-danger">Eliminar</a>
+        </li>
     {% endfor %}
     </ul>
     <a href="{% url 'producto:index' %}">Volver a indice de productos</a>
