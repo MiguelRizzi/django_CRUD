@@ -5,7 +5,15 @@
 {% block content %}
 
     {% block content_producto %}
-        <a href="{% url 'producto:producto_categoria_list' %}">Ir a lista de categorias</a>
+        <h2>Crear Categoria de Productos</h2>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="{% url 'producto:producto_categoria_list' %}">Lista de categorias</a>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url 'producto:producto_categoria_create' %}">Crear categoria</a>
+            </li>
+        </ul>
     {% endblock content_producto %}
     
 {% endblock content %}
