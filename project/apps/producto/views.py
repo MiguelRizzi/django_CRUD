@@ -1,8 +1,9 @@
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from . import models, forms
 from django.urls import reverse_lazy
 
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
@@ -31,6 +32,7 @@ class ProductoCategoriaDelete(DeleteView):
     model = models.ProductoCategoria
     template_name = "producto/producto_categoria_delete.html"
     success_url = reverse_lazy("producto:producto_categoria_list")
+
 
 
 # Vistas basadas en funciones
@@ -68,3 +70,12 @@ def producto_categoria_delete(request, id):
         return redirect("producto:producto_categoria_list")
     return render(request, "producto/producto_categoria_delete.html", {"categoria": categoria})
 """
+
+def producto_categoria_detail(request: HttpRequest, pk) -> HttpResponse:
+    categoria = models.ProductoCategoria.objects.get(id=pk)
+    return render(request, "producto/producto_categoria_detail.html", {"object": categoria})
+
+
+class ProductoCategoriaDetail(DetailView):
+    model = models.ProductoCategoria
+    template_name= "producto/producto_categoria_detail.html"
