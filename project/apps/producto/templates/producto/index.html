@@ -11,7 +11,13 @@
                 <a href="{% url 'producto:producto_categoria_list' %}">Lista de categorias</a>
             </li>
             <li class="list-group-item">
+                <a href="{% url 'producto:producto_list' %}">Lista de productos</a>
+            </li>
+            <li class="list-group-item">
                 <a href="{% url 'producto:producto_categoria_create' %}">Crear categoria</a>
+            </li>
+            <li class="list-group-item">
+                <a href="{% url 'producto:producto_create' %}">Crear producto</a>
             </li>
         </ul>
     {% endblock content_producto %}

@@ -12,3 +12,13 @@ class ProductoCategoriaForm(ModelForm):
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'descripcion': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+class ProductoForm(ModelForm):
+    class Meta:
+        model = models.Producto
+        fields = ['nombre', 'precio', 'categoria']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'precio': forms.NumberInput(attrs={'class': 'form-control'}),
+            'categoria': forms.Select(attrs={'class': 'form-control'}),
+        }
