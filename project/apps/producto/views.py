@@ -7,39 +7,12 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
-def index(request):
-    return render(request, "producto/index.html")
-
-# Vistas basadas en clases
-class ProductoCategoriaList(ListView):
-    model = models.ProductoCategoria
-    template_name = "producto/producto_categoria_list.html"
-    context_object_name= "categorias"
-
-class ProductoCategoriaDetail(DetailView):
-    model = models.ProductoCategoria
-    template_name= "producto/producto_categoria_detail.html"
-
-class ProductoCategoriaCreate(CreateView):
-    model = models.ProductoCategoria
-    form_class = forms.ProductoCategoriaForm
-    template_name = "producto/producto_categoria_create.html"
-    success_url = reverse_lazy("producto:producto_categoria_list")
-    
-class ProductoCategoriaUpdate(UpdateView):
-    model = models.ProductoCategoria
-    form_class = forms.ProductoCategoriaForm
-    template_name = "producto/producto_categoria_update.html"
-    success_url = reverse_lazy("producto:producto_categoria_list")
-
-class ProductoCategoriaDelete(DeleteView):
-    model = models.ProductoCategoria
-    template_name = "producto/producto_categoria_delete.html"
-    success_url = reverse_lazy("producto:producto_categoria_list")
-
 
 
 # Vistas basadas en funciones
+def index(request):
+    return render(request, "producto/index.html")
+
 """
 def producto_categoria_list(request):
     categorias = models.ProductoCategoria.objects.all()
@@ -79,6 +52,39 @@ def producto_categoria_detail(request: HttpRequest, pk) -> HttpResponse:
     return render(request, "producto/producto_categoria_detail.html", {"object": categoria})
 """
 
+
+# Vistas basadas en clases
+
+#class IndexView(TemplateView):
+#   template_name = "producto/index.html"
+
+class ProductoCategoriaList(ListView):
+    model = models.ProductoCategoria
+    template_name = "producto/producto_categoria_list.html"
+    context_object_name= "categorias"
+
+class ProductoCategoriaDetail(DetailView):
+    model = models.ProductoCategoria
+    template_name= "producto/producto_categoria_detail.html"
+
+class ProductoCategoriaCreate(CreateView):
+    model = models.ProductoCategoria
+    form_class = forms.ProductoCategoriaForm
+    template_name = "producto/producto_categoria_form.html"
+    success_url = reverse_lazy("producto:producto_categoria_list")
+    
+class ProductoCategoriaUpdate(UpdateView):
+    model = models.ProductoCategoria
+    form_class = forms.ProductoCategoriaForm
+    template_name = "producto/producto_categoria_form.html"
+    success_url = reverse_lazy("producto:producto_categoria_list")
+
+class ProductoCategoriaDelete(DeleteView):
+    model = models.ProductoCategoria
+    template_name = "producto/producto_categoria_confirm_delete.html"
+    success_url = reverse_lazy("producto:producto_categoria_list")
+
+
 class ProductoList(ListView):
     model = models.Producto
     context_object_name= "productos"
@@ -89,17 +95,14 @@ class ProductoDetail(DetailView):
 class ProductoCreate(CreateView):
     model = models.Producto
     form_class = forms.ProductoForm
-    template_name = "producto/producto_create.html"
     success_url = reverse_lazy("producto:producto_list")
     
 class ProductoUpdate(UpdateView):
     model = models.Producto
     form_class = forms.ProductoForm
-    template_name= "producto/producto_update.html"
     success_url = reverse_lazy("producto:producto_list")
 
 class ProductoDelete(DeleteView):
     model = models.Producto
-    template_name = "producto/producto_delete.html"
     success_url = reverse_lazy("producto:producto_list")
 
