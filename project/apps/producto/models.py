@@ -17,5 +17,9 @@ class Producto(models.Model):
     precio = models.FloatField()
     categoria = models.ForeignKey(ProductoCategoria, on_delete=models.SET_NULL, blank=True, null=True)
 
+    class Meta:
+            verbose_name = 'Producto'
+            verbose_name_plural = "Productos"
+
     def __str__(self):
         return self.nombre

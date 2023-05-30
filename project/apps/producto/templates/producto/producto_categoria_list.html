@@ -4,6 +4,14 @@
 
 {% block content_producto %}
     <h2>Categorias de productos</h2>
+
+    <!-- Sirve para buscar categorías por nombre. Se pasa a la variable consulta de la vista. -->
+    <div class="py-lg-4">
+        <form action="{% url 'producto:producto_categoria_list' %}" method="get">
+            <input name="consulta" type="text" placeholder="Buscar...">
+        </form>
+    </div>
+
     <ul class="list-group">
     {% for categoria in categorias %}
         <li class="list-group-item">
@@ -12,7 +20,11 @@
             <a href="{% url 'producto:producto_categoria_update' categoria.id %}" class="btn btn-primary">Modificar</a>
             <a href="{% url 'producto:producto_categoria_delete' categoria.id %}" class="btn btn-danger">Eliminar</a>
         </li>
-    {% endfor %}
+        {% endfor %}
+        <form method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Buscar" class="btn btn-prumary">
+        </form>
     </ul>
     <a href="{% url 'producto:index' %}">Volver a indice de productos</a>
     

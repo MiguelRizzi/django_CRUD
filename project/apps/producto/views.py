@@ -62,6 +62,16 @@ class ProductoCategoriaList(ListView):
     model = models.ProductoCategoria
     template_name = "producto/producto_categoria_list.html"
     context_object_name= "categorias"
+    def get_queryset(self):
+        # Si la búsqueda tiene algún texto introducido, devuelve todos los productos que contengan dicho texto
+        if self.request.GET.get("consulta"):
+            query = self.request.GET.get("consulta")
+            object_list = models.ProductoCategoria.objects.filter(nombre__icontains=query)
+        # Si no, devuelve todos los productos
+        else:
+            object_list = models.ProductoCategoria.objects.all()
+        return object_list
+        
 
 class ProductoCategoriaDetail(DetailView):
     model = models.ProductoCategoria
