@@ -7,7 +7,7 @@ Proyecto Django de ejemplo que muestra cómo hacer un CRUD en Django, registro d
 
 Sigue estos pasos para instalar el proyecto en tu máquina local:
 
-- Clone este repositorio en su máquina local usando el comando `git clone https://github.com/MiguelRizzi/tercera_pre-entrega_rizzi.git`.
+- Clone este repositorio en su máquina local usando el comando `git clone https://github.com/MiguelRizzi/django_CRUD.git`.
 
 - Si usa Visual Studio Code, abra el archivo `requirements.txt` y haga clic en Crear ambiente, luego elegir Venv y el intérprete Python, y finalmente pregunta por las dependencias: elegimos `requirements.txt`. Esto creara el entorno virtual e instalará todas las librerías necesarias para ejecutar el proyecto.
 
