@@ -1,6 +1,6 @@
 # Django CRUD
 
-Proyecto Django de ejemplo que muestra cómo hacer un CRUD en Django. Realizado en la clase 22 del curso Python en CODERHOUSE.
+Proyecto Django de ejemplo que muestra cómo hacer un CRUD en Django.
 
 ---
 ## Instalación y ejecución
