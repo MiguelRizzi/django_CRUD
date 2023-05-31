@@ -4,28 +4,36 @@
 
 {% block content_producto %}
     <h2>Categorias de productos</h2>
+    
+    {% if object_list %}
+        
+        <!-- Sirve para buscar categorías por nombre. Se pasa a la variable consulta de la vista. -->
+        <div class="py-lg-4">
+            <form action="{% url 'producto:producto_categoria_list' %}" method="get">
+                <input name="consulta" type="text" placeholder="Buscar...">
+            </form>
+        </div>
 
-    <!-- Sirve para buscar categorías por nombre. Se pasa a la variable consulta de la vista. -->
-    <div class="py-lg-4">
-        <form action="{% url 'producto:producto_categoria_list' %}" method="get">
-            <input name="consulta" type="text" placeholder="Buscar...">
-        </form>
-    </div>
+        <ul class="list-group">
+        {% for categoria in categorias %}
+            <li class="list-group-item">
+                {{ categoria.nombre }} -
+                <a href="{% url 'producto:producto_categoria_detail' categoria.id %}" class="btn btn-secondary">Ver detalle</a>
+                <a href="{% url 'producto:producto_categoria_update' categoria.id %}" class="btn btn-primary">Modificar</a>
+                <a href="{% url 'producto:producto_categoria_delete' categoria.id %}" class="btn btn-danger">Eliminar</a>
+            </li>
+            {% endfor %}
 
-    <ul class="list-group">
-    {% for categoria in categorias %}
-        <li class="list-group-item">
-            {{ categoria.nombre }} -
-            <a href="{% url 'producto:producto_categoria_detail' categoria.id %}" class="btn btn-secondary">Ver detalle</a>
-            <a href="{% url 'producto:producto_categoria_update' categoria.id %}" class="btn btn-primary">Modificar</a>
-            <a href="{% url 'producto:producto_categoria_delete' categoria.id %}" class="btn btn-danger">Eliminar</a>
-        </li>
-        {% endfor %}
-        <form method="POST">
-            {% csrf_token %}
-            <input type="submit" value="Buscar" class="btn btn-prumary">
-        </form>
-    </ul>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Buscar" class="btn btn-prumary">
+            </form>
+        </ul>
+
+    {% else %}
+        <p class="fs-4 fst-italic">No se encontraron registros.</p>
+    {% endif %}
+
     <a href="{% url 'producto:index' %}">Volver a indice de productos</a>
     
 {% endblock content_producto %}
