@@ -1,6 +1,6 @@
 # Django CRUD
 
-Proyecto Django de ejemplo que muestra cómo hacer un CRUD en Django.
+Proyecto Django de ejemplo que muestra cómo hacer un CRUD en Django, registro de usuarios y permisos.
 
 ---
 ## Instalación y ejecución
