@@ -13,6 +13,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Vistas basadas en funciones
+@login_required
 def index(request):
     return render(request, "producto/index.html")
 
