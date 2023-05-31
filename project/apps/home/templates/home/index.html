@@ -3,6 +3,16 @@
 {% block title %}Bienvenidos a mi Proyecto Django{% endblock title %}
     
 {% block content %}
+
+    {% if user.is_authenticated %}
+        <p>{{mensaje}}</p>
+        <p>Bienvenido {{ user.username }}!</p>
+        {% if user.is_staff %}
+            <a href="{% url 'admin:index' %}">Panel de administrador</a>
+            <a href="{% url 'home:register' %}">Crear cuenta vendedor</a>
+        {% endif %}
+    {% endif %}
+    
     <h2>Services we offer</h2>
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
 {% endblock content %}

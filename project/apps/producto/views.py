@@ -5,6 +5,9 @@ from django.urls import reverse_lazy
 
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
@@ -58,7 +61,7 @@ def producto_categoria_detail(request: HttpRequest, pk) -> HttpResponse:
 #class IndexView(TemplateView):
 #   template_name = "producto/index.html"
 
-class ProductoCategoriaList(ListView):
+class ProductoCategoriaList(LoginRequiredMixin, ListView):
     model = models.ProductoCategoria
     template_name = "producto/producto_categoria_list.html"
     context_object_name= "categorias"
@@ -73,46 +76,46 @@ class ProductoCategoriaList(ListView):
         return object_list
         
 
-class ProductoCategoriaDetail(DetailView):
+class ProductoCategoriaDetail(LoginRequiredMixin, DetailView):
     model = models.ProductoCategoria
     template_name= "producto/producto_categoria_detail.html"
 
-class ProductoCategoriaCreate(CreateView):
+class ProductoCategoriaCreate(LoginRequiredMixin, CreateView):
     model = models.ProductoCategoria
     form_class = forms.ProductoCategoriaForm
     template_name = "producto/producto_categoria_form.html"
     success_url = reverse_lazy("producto:producto_categoria_list")
     
-class ProductoCategoriaUpdate(UpdateView):
+class ProductoCategoriaUpdate(LoginRequiredMixin, UpdateView):
     model = models.ProductoCategoria
     form_class = forms.ProductoCategoriaForm
     template_name = "producto/producto_categoria_form.html"
     success_url = reverse_lazy("producto:producto_categoria_list")
 
-class ProductoCategoriaDelete(DeleteView):
+class ProductoCategoriaDelete(LoginRequiredMixin, DeleteView):
     model = models.ProductoCategoria
     template_name = "producto/producto_categoria_confirm_delete.html"
     success_url = reverse_lazy("producto:producto_categoria_list")
 
 
-class ProductoList(ListView):
+class ProductoList(LoginRequiredMixin, ListView):
     model = models.Producto
     context_object_name= "productos"
 
-class ProductoDetail(DetailView):
+class ProductoDetail(LoginRequiredMixin, DetailView):
     model = models.Producto
 
-class ProductoCreate(CreateView):
+class ProductoCreate(LoginRequiredMixin, CreateView):
     model = models.Producto
     form_class = forms.ProductoForm
     success_url = reverse_lazy("producto:producto_list")
     
-class ProductoUpdate(UpdateView):
+class ProductoUpdate(LoginRequiredMixin, UpdateView):
     model = models.Producto
     form_class = forms.ProductoForm
     success_url = reverse_lazy("producto:producto_list")
 
-class ProductoDelete(DeleteView):
+class ProductoDelete(LoginRequiredMixin, DeleteView):
     model = models.Producto
     success_url = reverse_lazy("producto:producto_list")
 

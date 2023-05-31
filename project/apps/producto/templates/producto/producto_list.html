@@ -9,8 +9,10 @@
         <li class="list-group-item">
             {{ producto.nombre }} -
             <a href="{% url 'producto:producto_detail' producto.id %}" class="btn btn-secondary">Ver detalle</a>
-            <a href="{% url 'producto:producto_update' producto.id %}" class="btn btn-primary">Modificar</a>
-            <a href="{% url 'producto:producto_delete' producto.id %}" class="btn btn-danger">Eliminar</a>
+            {% if user.is_staff %}
+                <a href="{% url 'producto:producto_update' producto.id %}" class="btn btn-primary">Modificar</a>
+                <a href="{% url 'producto:producto_delete' producto.id %}" class="btn btn-danger">Eliminar</a>
+            {% endif %}
         </li>
     {% endfor %}
     </ul>
