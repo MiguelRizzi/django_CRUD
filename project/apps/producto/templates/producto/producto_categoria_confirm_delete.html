@@ -2,7 +2,7 @@
 
 {% block content_producto %}
     <h2>Eliminar categoria de productos</h2>
-    <p>¿Confirmas eliminar {{ categoria }}?</p>
+    <p>¿Confirmas eliminar {{ object.nombre }}?</p>
     <form method="POST">
         {% csrf_token %}
         <input type="submit" value="Eliminar" class="btn btn-danger">

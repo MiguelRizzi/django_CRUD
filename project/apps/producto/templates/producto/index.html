@@ -5,28 +5,35 @@
 {% block content %}
 
     {% block content_producto %}
-        <h2>Menu Productos</h2>
-        <ul class="list-group">
+        <div class="container px-4">
+            <h2>Categorias de productos</h2>
+            <ul class="list-group">
 
-            <li class="list-group-item">
-                <a href="{% url 'producto:producto_categoria_list' %}">Lista de categorias</a>
-            </li>
-
-            <li class="list-group-item">
-                <a href="{% url 'producto:producto_list' %}">Lista de productos</a>
-            </li>
-
-            {% if user.is_staff %} 
                 <li class="list-group-item">
-                    <a href="{% url 'producto:producto_categoria_create' %}">Crear categoria</a>
+                    <a href="{% url 'producto:producto_categoria_list' %}">Lista de categorias</a>
                 </li>
-                
+                {% if user.is_staff %} 
+                    <li class="list-group-item">
+                        <a href="{% url 'producto:producto_categoria_create' %}">Crear categoria</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="container px-4">
+            <h2>productos</h2>
+            <ul class="list-group">        
                 <li class="list-group-item">
-                    <a href="{% url 'producto:producto_create' %}">Crear producto</a>
+                    <a href="{% url 'producto:producto_list' %}">Lista de productos</a>
                 </li>
-            {% endif %}
-            
-        </ul>
+
+                {% if user.is_staff %}                 
+                    <li class="list-group-item">
+                        <a href="{% url 'producto:producto_create' %}">Crear producto</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
     {% endblock content_producto %}
     
 {% endblock content %}

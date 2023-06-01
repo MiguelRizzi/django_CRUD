@@ -6,10 +6,10 @@
 
     {% if user.is_authenticated %}
         <p>{{mensaje}}</p>
-        <p>Bienvenido {{ user.username }}!</p>
+        <p class="fs-4 fst-italic">Bienvenido {{ user.username }}!</p>
         {% if user.is_staff %}
-            <a href="{% url 'admin:index' %}">Panel de administrador</a>
-            <a href="{% url 'home:register' %}">Crear cuenta vendedor</a>
+            <a class="btn btn-primary" href="{% url 'admin:index' %}">Panel de administrador</a>
+            <a class="btn btn-primary" href="{% url 'home:register' %}">Crear cuenta vendedor</a>
         {% endif %}
     {% endif %}
     
