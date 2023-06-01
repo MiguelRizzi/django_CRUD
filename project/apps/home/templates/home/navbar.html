@@ -6,15 +6,15 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home:index' %}">Home</a></li>
-
+                <li class="nav-item"><a class="nav-link {% if request.path == '/info/' %}active{% endif %}" href="{% url 'home:info' %}">¿Quienes Somos?</a></li>
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link {% if request.path == '/producto/' %}active{% endif %}" href="{% url 'producto:index' %}">Productos</a></li>
                     <li class="nav-item"><a class="nav-link text-info active" href="">{{ user.username }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'home:logout' %}">Logout</a></li>
                     {% else %}
                     <!-- Falta crear ¿quienes somos? -->
-                    <li class="nav-item"><a class="nav-link {% if request.path == '/info/' %}active{% endif %}" href="">¿Quienes Somos?</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.path == '/login/' %}active{% endif %}" href="{% url 'home:login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.path == '/register/' %}active{% endif %}" href="{% url 'home:register' %}">Registrarse</a></li>
                 {% endif %}
             </ul>
         </div>
